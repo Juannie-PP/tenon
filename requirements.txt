@@ -1,0 +1,4 @@
+requests>=2.19.1
+numpy>=1.23.0
+opencv-python==4.5.5.64
+
