@@ -6,11 +6,11 @@ with open("README.md", "r") as fh:
 
 setup(
     name='captcha-utils',
-    version='0.0.1',
+    version='0.0.2',
     packages=setuptools.find_packages(),
-    url='https://github.com/Junie-PP/captcha-utils',
+    url='https://github.com/Juannie-PP/captcha-utils',
     license='MIT',
-    author='Junie-PP',
+    author='Juannie-PP',
     author_email='2604868278@qq.com',
     description='A package to solve captcha',
     long_description=long_description,
