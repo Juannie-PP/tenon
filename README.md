@@ -1,21 +1,20 @@
 # captcha-utils
 
----
+
 ## 缺口验证码和旋转验证码解决方案
 该库主要提供两种类型的滑块识别，主要通过opencv实现，支持图片格式：base64、图片文件地址、图片url链接
 
----
-### 安装
+
+## 安装
 
 `pip install captcha-utils` 
 
----  
-### notch_detect
-缺口图片滑块识别
 
-缺口图  
-![slide.png](captcha/image/slide.png)
 
+## notch_detect
+>缺口图片滑块识别  
+>缺口图  
+>![slide.png](captcha/image/slide.png)  
 带滑块缺口的背景图  
 ![background.png](captcha/image/background.png)
 
@@ -36,11 +35,11 @@ background = 'background.png'
 
 distance = notch_detect(slide, background, image_type=2)
 ```
----
 
-### rotate_detect
-双图旋转图片滑块识别, 支持外圈图片为矩形、方形、圆形
 
+
+## rotate_detect
+>双图旋转图片滑块识别, 支持外圈图片为矩形、方形、圆形  
 内圈图  
 ![inner.jpeg](captcha/image/inner.jpeg)  
 外圈图  
@@ -71,11 +70,12 @@ big_circle = "data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51
 
 result = rotate_detect(small_circle, big_circle, small_circle_crop_pixel=55)
 ```
---- 
-### rotate_detect_and_show_image  
-rotate_detect的调试方案
 
----
+
+
+## rotate_detect_and_show_image  
+>rotate_detect的调试方案
+
 👏👏👏欢迎和各位大佬交流学习
-![vx.JPG](captcha%2Fimage%2Fvx.JPG)
+<img alt="vx.JPG" height="200" src="captcha/image/vx.JPG" width="200"/>  
 🤫加好友备注: captcha-utils
