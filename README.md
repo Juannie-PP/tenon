@@ -14,10 +14,10 @@
 缺口图片滑块识别
 
 缺口图  
-![slide.png](slide.png)
+![slide.png](captcha/image/slide.png)
 
 带滑块缺口的背景图  
-![background.png](background.png)
+![background.png](captcha/image/background.png)
 
 ```python
 """
@@ -42,9 +42,9 @@ distance = notch_detect(slide, background, image_type=2)
 双图旋转图片滑块识别, 支持外圈图片为矩形、方形、圆形
 
 内圈图  
-![inner.jpeg](inner.jpeg)  
+![inner.jpeg](captcha/image/inner.jpeg)  
 外圈图  
-![outer.jpeg](outer.jpeg)  
+![outer.jpeg](captcha/image/outer.jpeg)  
 
 ```python
 """
@@ -74,3 +74,8 @@ result = rotate_detect(small_circle, big_circle, small_circle_crop_pixel=55)
 --- 
 ### rotate_detect_and_show_image  
 rotate_detect的调试方案
+
+---
+👏👏👏欢迎和各位大佬交流学习
+![vx.JPG](captcha%2Fimage%2Fvx.JPG)
+🤫加好友备注: captcha-utils
