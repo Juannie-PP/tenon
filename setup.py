@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='Captcha',
+    name='captcha-utils',
     version='0.0.1',
     packages=setuptools.find_packages(),
     url='https://github.com/Junie-PP/captcha-utils',

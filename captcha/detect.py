@@ -1,12 +1,14 @@
-import base64
+import re
 import cv2
+import base64
 import numpy as np
 import requests
 
 
 def request_image_content(image_url, proxies=None):
     try:
-        headers = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'}
+        headers = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
+                                 '(KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'}
         response = requests.get(image_url, headers=headers, proxies=proxies)
         return response.content
     except Exception as e:
@@ -15,13 +17,6 @@ def request_image_content(image_url, proxies=None):
 
 
 def set_mask(shape, r1, r2):
-    """
-    创建环形遮罩
-    :param shape: 需要处理的图片size，宽高
-    :param r1: 环形遮罩外环半径
-    :param r2: 环形遮罩内环半径
-    :return: 环形遮罩
-    """
     (x, y) = (shape[0] // 2, shape[1] // 2)
     mask = np.zeros(shape[:2], dtype=np.uint8)
     mask = cv2.circle(mask, (x, y), r1, (255, 255, 255), -1)
@@ -30,11 +25,6 @@ def set_mask(shape, r1, r2):
 
 
 def cut_image(origin_image, crop_pixel):
-    """
-    裁剪图片，得到一个宽高为crop_pixel * 2的图片
-    :param origin_image: 原始图片
-    :param crop_pixel: 图片中心点往两边的距离
-    """
     height, width = origin_image.shape[:2]
     height_cut_size = (height - crop_pixel * 2) // 2
     width_cut_size = (width - crop_pixel * 2) // 2
@@ -43,13 +33,6 @@ def cut_image(origin_image, crop_pixel):
 
 
 def mask_image(origin_image, r1, r2):
-    """
-    处理原始图片,得到一个环形图案的图片
-    :param origin_image: 原始图片
-    :param r1: 环形遮罩外环半径
-    :param r2: 环形遮罩内环半径
-    :return: 返回加上环形遮罩后的图片
-    """
     deal_image = cut_image(origin_image, r1)
     mask = set_mask(deal_image.shape, r1, r2)
     image = cv2.add(deal_image, np.zeros(deal_image.shape, dtype=np.uint8), mask=mask)
@@ -58,14 +41,6 @@ def mask_image(origin_image, r1, r2):
 
 
 def rotate_image(inner_image, outer_image, similar_precision, rotate_type):
-    """
-    对两张环形图片按旋转的类型进行旋转比对，返回相似值最高值和此时的旋转角度
-    :param inner_image: 小圈环形图片
-    :param outer_image: 大圈环形图片
-    :param similar_precision: 验证精度: 度数 = 10 ** (2-similar_precision); 1: 10 度; 2: 1 度 ...
-    :param rotate_type: 图片旋转的类型: True: 小圈逆时针; False: 小圈顺时针
-    :return: (相似值, 旋转角度)
-    """
     try:
         angle = 0
         max_val = 0
@@ -102,7 +77,8 @@ def image_to_cv2(base_image, image_type, color_type, proxies=None):
             raise Exception("image_type error! 图片类型错误！")
         image_color_type = cv2.COLOR_RGB2GRAY if color_type else cv2.IMREAD_COLOR
         if image_type == 0:
-            image_array = np.asarray(bytearray(base64.b64decode(base_image)), dtype="uint8")
+            base64_image = re.search("base64,(.*?)$", base_image).group(1)
+            image_array = np.asarray(bytearray(base64.b64decode(base64_image)), dtype="uint8")
             image = cv2.imdecode(image_array, image_color_type)
         elif image_type == 1:
             image_content = request_image_content(base_image, proxies)
@@ -121,21 +97,6 @@ def image_to_cv2(base_image, image_type, color_type, proxies=None):
 def rotate_detect(small_circle, big_circle, image_type: int = 0, color_type: bool = True, check_pixel: int = 10,
                   similar_precision: int = 2, rotate_type: bool = False, big_circle_empty_radius=None,
                   small_circle_crop_pixel: int = 0, speed_ratio: float = 1, proxies=None):
-    """
-    双图旋转类型滑块验证码
-    :param small_circle: 小圈图片
-    :param big_circle: 大圈图片
-    :param image_type: 图片类型：0: 图片base64; 1: 图片url; 2: 图片文件地址
-    :param color_type: 是否需要灰度化处理: True: 是; False: 否
-    :param check_pixel: 进行图片验证的像素宽度
-    :param similar_precision: 验证精度: 度数 = 10 ** (2-similar_precision); 1: 10 度; 2: 1 度 ...
-    :param rotate_type: 图片旋转的类型: True: 小圈逆时针; False: 小圈顺时针
-    :param big_circle_empty_radius: 大圈内部留白部分半径
-    :param small_circle_crop_pixel: 小圈外部留白的像素:（图片宽度 - 有图部分的直径) / 2
-    :param speed_ratio: 小圈与大圈的转动速率比: 小圈转动360度时/大圈转动的角度
-    :param proxies: 代理
-    :return: dict(相似度, 总共旋转的角度, 小圈图片旋转的角度)
-    """
     try:
         small_circle_image = image_to_cv2(small_circle, image_type, color_type, proxies)
         big_circle_image = image_to_cv2(big_circle, image_type, color_type, proxies)
@@ -163,22 +124,6 @@ def rotate_detect_and_show_image(
         small_circle, big_circle, image_type: int = 0, color_type: bool = True, check_pixel: int = 10,
         similar_precision: int = 2, rotate_type: bool = False, big_circle_empty_radius=None,
         small_circle_crop_pixel: int = 0, speed_ratio: float = 1, image_show_time: int = 0, proxies=None):
-    """
-    双图旋转类型滑块验证码调试测试使用
-    :param small_circle: 小圈图片
-    :param big_circle: 大圈图片
-    :param image_type: 图片类型：0: 图片base64; 1: 图片url; 2: 图片文件地址
-    :param color_type: 是否需要灰度化处理: True: 是; False: 否
-    :param check_pixel: 进行图片验证的像素宽度
-    :param similar_precision: 验证精度: 度数 = 10 ** (2-similar_precision); 1: 10 度; 2: 1 度 ...
-    :param rotate_type: 图片旋转的类型: True: 小圈逆时针; False: 小圈顺时针
-    :param big_circle_empty_radius: 大圈内部留白部分半径
-    :param small_circle_crop_pixel: 小圈外部留白的像素:（图片宽度 - 有图部分的直径) / 2
-    :param speed_ratio: 小圈与大圈的转动速率比: 小圈转动360度时/大圈转动的角度
-    :param image_show_time: 图片显示时间(s): 默认显示15s，0为无限期显示
-    :param proxies: 代理
-    :return: dict(相似度, 总共旋转的角度, 小圈图片旋转的角度)
-    """
     try:
         small_circle_image = image_to_cv2(small_circle, image_type, color_type, proxies)
         big_circle_image = image_to_cv2(big_circle, image_type, color_type, proxies)
@@ -219,15 +164,6 @@ def rotate_detect_and_show_image(
 
 
 def notch_detect(slider, background, image_type: int = 0, color_type: bool = True, proxies=None):
-    """
-    缺口类型滑块验证码
-    :param slider: 滑块图片
-    :param background: 背景图片
-    :param image_type: 图片类型：0: 图片base64; 1: 图片url; 2: 图片文件地址
-    :param color_type: 是否需要灰度化处理: True: 是; False: 否
-    :param proxies: 代理
-    :return: x轴的滑动距离
-    """
     try:
         slider_img = image_to_cv2(slider, image_type, color_type, proxies)
         background_img = image_to_cv2(background, image_type, color_type, proxies)
@@ -243,4 +179,3 @@ def notch_detect(slider, background, image_type: int = 0, color_type: bool = Tru
     except Exception as e:
         print('错误! :: ' + str(e))
         return False
-
