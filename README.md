@@ -76,6 +76,6 @@ result = rotate_detect(small_circle, big_circle, small_circle_crop_pixel=55)
 ## rotate_detect_and_show_image  
 >rotate_detect的调试方案
 
-👏👏👏欢迎和各位大佬交流学习
+👏👏👏欢迎和各位大佬交流学习  
 <img alt="vx.JPG" height="200" src="captcha/image/vx.JPG" width="200"/>  
 🤫加好友备注: captcha-utils
