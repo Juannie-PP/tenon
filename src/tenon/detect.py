@@ -109,7 +109,7 @@ def rotate_identify(
     双图旋转类型滑块验证码识别
     :param small_circle: 小圈图片
     :param big_circle: 大圈图片
-    :param image_type: 图片类型：0: 图片base64; 1: 图片url; 2: 图片文件地址
+    :param image_type: 图片类型: 0: 图片base64; 1: 图片url; 2: 图片文件地址
     :param color_type: 是否需要灰度化处理: True: 是; False: 否
     :param check_pixel: 进行图片验证的像素宽度
     :param similar_precision: 验证精度: 度数 = 10 ** (2-similar_precision); 1: 10 度; 2: 1 度 ...
@@ -156,7 +156,7 @@ def notch_identify(
     缺口图片验证码识别
     :param slider: 滑块图片
     :param background: 背景图片
-    :param image_type: 图片类型：0: 图片base64; 1: 图片url; 2: 图片文件地址
+    :param image_type: 图片类型: 0: 图片base64; 1: 图片url; 2: 图片文件地址
     :param color_type: 是否需要灰度化处理: True: 是; False: 否
     :param proxies: 代理, 用于请求图片url链接
     :return: 缺口x轴像素间距
