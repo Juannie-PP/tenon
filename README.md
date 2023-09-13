@@ -7,14 +7,13 @@
 
 ## 安装
 
-`pip install tenon` 
-
+`pip install tenon`
 
 
 ## notch_identify
 >缺口图片滑块识别  
->缺口图  
->![slide.png](tests/image/slide.png)  
+缺口图  
+![slide.png](tests/image/slide.png)  
 带滑块缺口的背景图  
 ![background.png](tests/image/background.png)
 
