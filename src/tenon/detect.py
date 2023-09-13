@@ -183,7 +183,6 @@ def rotate_identify_and_show_image(
     rotate_type: bool = False,
     big_circle_empty_radius=None,
     small_circle_crop_pixel: int = 0,
-    speed_ratio: float = 1,
     image_show_time: int = 0,
     proxies=None,
 ):
