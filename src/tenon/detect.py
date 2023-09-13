@@ -37,7 +37,6 @@ def mask_image(origin_image, r1, r2):
     deal_image = cut_image(origin_image, r1)
     mask = set_mask(deal_image.shape, r1, r2)
     image = cv2.add(deal_image, np.zeros(deal_image.shape, dtype=np.uint8), mask=mask)
-    cv2.imshow("big", image)
     return image
 
 
