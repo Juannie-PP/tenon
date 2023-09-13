@@ -7,7 +7,9 @@
 
 ## 安装
 
-`pip install tenon`
+```
+~ pip install tenon
+```
 
 
 ## notch_identify
