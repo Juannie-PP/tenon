@@ -10,7 +10,6 @@
 `pip install tenon` 
 
 
-
 ## notch_identify
 >缺口图片滑块识别  
 >缺口图  
@@ -31,10 +30,10 @@ distance = notch_identify(slide, background, image_type=2)
 
 
 ## rotate_identify
->双图旋转图片滑块识别, 支持外圈图片为矩形、方形、圆形  
-内圈图  
-![inner.jpeg](tests/image/inner.jpeg)  
-外圈图  
+>双图旋转图片滑块识别, 支持外圈图片为矩形、方形、圆形
+内圈图
+![inner.jpeg](tests/image/inner.jpeg)
+外圈图
 ![outer.jpeg](tests/image/outer.jpeg)
 
 ```python
