@@ -1,0 +1,11 @@
+[flake8]
+ignore =
+    src/tenon/__init__.py: F401
+    E203
+    E501
+exclude =
+    .git
+    build
+    dist
+    venv
+max-line-length = 100
