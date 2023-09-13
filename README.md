@@ -8,7 +8,7 @@
 ## 安装
 
 ```
-~ pip install tenon
+ pip install tenon
 ```
 
 
@@ -46,7 +46,8 @@ big_circle = "data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51
 
 result = rotate_identify(small_circle, big_circle, small_circle_crop_pixel=55)
 ```
-
+## rotate_identify_and_show_image  
+>旋转验证码调试方法，输出旋转后图片
 
 👏👏👏欢迎和各位大佬交流学习  
 <img alt="vx.JPG" height="200" src="tests/image/vx.JPG" width="200"/>  
