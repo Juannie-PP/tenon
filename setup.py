@@ -1,6 +1,6 @@
 from setuptools import setup
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
@@ -15,7 +15,7 @@ setup(
     description="A package to solve captcha",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    install_requires=["requests>=2.19.1", "numpy>=1.23.0", "opencv-python==4.5.5.64"],
+    install_requires=["requests>=2.19.1", "numpy>=1.21.5", "opencv-python==4.5.5.64"],
     classifiers=[
         "Programming Language :: Python :: 3",
     ],
@@ -26,5 +26,5 @@ setup(
         "captcha",
         "verification code",
     ],
-    python_requires=">=3.6",
+    python_requires=">=3.7",
 )
