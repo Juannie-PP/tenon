@@ -19,7 +19,7 @@ jobs:
           - { name: '3.10', python: '3.10', os: ubuntu-latest }
           - { name: '3.8', python: '3.8', os: ubuntu-latest }
           - { name: '3.7', python: '3.7', os: ubuntu-latest }
-        fail-fast: false
+      fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
