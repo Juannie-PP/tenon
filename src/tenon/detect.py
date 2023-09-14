@@ -2,10 +2,11 @@ import re
 import cv2
 import base64
 import numpy as np
+from typing import Optional
 
 
-def request_image_content(image_url, proxies=None):
-    import requests
+def request_image_content(image_url, proxies: Optional[dict] = None):
+    import requests  # type: ignore
 
     headers = {
         "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
@@ -102,7 +103,7 @@ def rotate_identify(
     big_circle_empty_radius: int = 0,
     small_circle_crop_pixel: int = 0,
     speed_ratio: float = 1,
-    proxies: dict = None,
+    proxies: Optional[dict] = None,
 ):
     """
     双图旋转类型滑块验证码识别
@@ -149,7 +150,7 @@ def notch_identify(
     background: str,
     image_type: int = 0,
     color_type: bool = True,
-    proxies: dict = None,
+    proxies: Optional[dict] = None,
 ):
     """
     缺口图片验证码识别
@@ -174,17 +175,17 @@ def notch_identify(
 
 
 def rotate_identify_and_show_image(
-    small_circle,
-    big_circle,
+    small_circle: str,
+    big_circle: str,
     image_type: int = 0,
     color_type: bool = True,
     check_pixel: int = 10,
     similar_precision: int = 2,
     rotate_type: bool = False,
-    big_circle_empty_radius=None,
+    big_circle_empty_radius: int = 0,
     small_circle_crop_pixel: int = 0,
     image_show_time: int = 0,
-    proxies=None,
+    proxies: Optional[dict] = None,
 ):
     small_circle_image = image_to_cv2(small_circle, image_type, color_type, proxies)
     big_circle_image = image_to_cv2(big_circle, image_type, color_type, proxies)
