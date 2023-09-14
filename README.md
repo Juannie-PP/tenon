@@ -1,5 +1,5 @@
 # tenon
-![Static Badge](https://img.shields.io/badge/python-3.6-blue) 
+![Static Badge](https://img.shields.io/badge/python-3.7-blue) 
 [![build and test](https://github.com/Juannie-PP/tenon/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/Juannie-PP/tenon/actions/workflows/build-and-test.yml) 
 ![PyPI - Version](https://img.shields.io/pypi/v/tenon)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/tenon) 
