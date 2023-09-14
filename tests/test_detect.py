@@ -1,5 +1,8 @@
+import os
 import pytest
-from tenon import rotate_identify, notch_identify
+from src.tenon import rotate_identify, notch_identify
+
+current_work_dir = os.path.dirname(__file__)
 
 
 @pytest.mark.parametrize(
@@ -12,7 +15,13 @@ from tenon import rotate_identify, notch_identify
             55,
             215,
         ),
-        ("image/inner.png", "image/outer.png", 2, 102, 313),
+        (
+            current_work_dir + "/image/inner.png",
+            current_work_dir + "/image/outer.png",
+            2,
+            102,
+            313,
+        ),
     ],
 )
 def test_rotate_identify(
@@ -31,7 +40,12 @@ def test_rotate_identify(
 @pytest.mark.parametrize(
     "slider, background, image_type, expected",
     [
-        ("image/slide.png", "image/background.png", 2, 133),
+        (
+            current_work_dir + "/image/slide.png",
+            current_work_dir + "/image/background.png",
+            2,
+            133,
+        ),
     ],
 )
 def test_notch_identify(slider, background, image_type, expected):
