@@ -40,7 +40,9 @@ distance = notch_identify(slide, background, image_type=2)
 内圈图  
 ![inner.jpeg](tests/image/inner.jpeg)  
 外圈图  
-![outer.jpeg](tests/image/outer.jpeg)
+![outer.jpeg](tests/image/outer.jpeg)  
+> small_circle_crop_pixel: 小圈外部留白的像素:（图片宽度 - 有图部分的直径) / 2  
+<img alt="small_circle_crop_pixel.png" height="300" src="tests/image/small_circle_crop_pixel.png" width="300"/>
 
 ```python
 from tenon import rotate_identify
