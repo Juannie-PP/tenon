@@ -41,14 +41,14 @@ def mask_image(origin_image, r1, r2):
     return image
 
 
-def rotate_image(inner_image, outer_image, similar_precision, rotate_type):
+def rotate_image(inner_image, outer_image, rotate_type):
     angle = 0
     max_val = 0
     start = 0
     end = 360
     h, w = inner_image.shape[:2]
     rotate_type = 1 if rotate_type else -1
-    for i in range(0, similar_precision):
+    for i in range(0, 2):
         rotate_max_similar = 0
         step = 10 ** (1 - i)
         rotate = start
@@ -98,7 +98,6 @@ def rotate_identify(
     image_type: int = 0,
     color_type: bool = True,
     check_pixel: int = 10,
-    similar_precision: int = 2,
     rotate_type: bool = False,
     big_circle_empty_radius: int = 0,
     small_circle_crop_pixel: int = 0,
@@ -112,7 +111,6 @@ def rotate_identify(
     :param image_type: 图片类型: 0: 图片base64; 1: 图片url; 2: 图片文件地址
     :param color_type: 是否需要灰度化处理: True: 是; False: 否
     :param check_pixel: 进行图片验证的像素宽度
-    :param similar_precision: 验证精度: 度数 = 10 ** (2-similar_precision); 1: 10 度; 2: 1 度 ...
     :param rotate_type: 图片旋转的类型: True: 小圈逆时针; False: 小圈顺时针
     :param big_circle_empty_radius: 大圈内部留白部分半径（在留白部分大于内圈实际图片时传值）
     :param small_circle_crop_pixel: 小圈外部留白的像素:（图片宽度 - 有图部分的直径) / 2
@@ -138,9 +136,7 @@ def rotate_identify(
     )
     inner_image = mask_image(small_circle_image, small_circle_r1, small_circle_r2)
     outer_image = cv2.resize(outer_image_before_resize, inner_image.shape[:2])
-    similar, total_angle = rotate_image(
-        inner_image, outer_image, similar_precision, rotate_type
-    )
+    similar, total_angle = rotate_image(inner_image, outer_image, rotate_type)
     inner_angle = round(total_angle * speed_ratio / (speed_ratio + 1), 2)
     return dict(similar=similar, total_angle=total_angle, inner_angle=inner_angle)
 
@@ -180,7 +176,6 @@ def rotate_identify_and_show_image(
     image_type: int = 0,
     color_type: bool = True,
     check_pixel: int = 10,
-    similar_precision: int = 2,
     rotate_type: bool = False,
     big_circle_empty_radius: int = 0,
     small_circle_crop_pixel: int = 0,
@@ -205,9 +200,7 @@ def rotate_identify_and_show_image(
     inner_image = mask_image(small_circle_image, small_circle_r1, small_circle_r2)
     outer_image = cv2.resize(outer_image_before_resize, inner_image.shape[:2])
 
-    similar, total_rotate_angle = rotate_image(
-        inner_image, outer_image, similar_precision, rotate_type
-    )
+    similar, total_rotate_angle = rotate_image(inner_image, outer_image, rotate_type)
 
     cut_small_image = cut_image(small_circle_image, small_circle_r1)
     height, width = cut_small_image.shape[:2]
