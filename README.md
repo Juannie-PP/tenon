@@ -41,7 +41,7 @@ distance = notch_identify(slide, background, image_type=2)
 ![inner.jpeg](tests/image/inner.jpeg)  
 外圈图  
 ![outer.jpeg](tests/image/outer.jpeg)  
-> small_circle_crop_pixel: 小圈外部留白的像素，使用截图工具即可得到
+> small_circle_crop_pixel: 小圈外部留白的像素，使用截图工具即可得到  
 > <img alt="small_circle_crop_pixel.png" height="300" src="tests/image/small_circle_crop_pixel.png" width="300"/>
 
 ```python
