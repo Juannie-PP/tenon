@@ -7,16 +7,14 @@
 ![PyPI - Downloads](https://img.shields.io/pypi/dd/tenon)
 
 ## 缺口验证码和旋转验证码解决方案
-该库主要提供两种类型的滑块识别，主要通过opencv实现，支持图片格式：base64、图片文件地址、图片url链接
-
-
+该库主要提供两种类型的滑块识别，主要通过opencv实现，支持图片格式：base64、图片文件地址、图片url链接  
 ## 安装
 
 ```
  pip install tenon
 ```
 
-https://github.com/Juannie-PP/tenon/blob/master/tests/image/
+
 ## notch_identify
 >缺口图片滑块识别  
 缺口图  
