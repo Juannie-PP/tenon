@@ -20,9 +20,9 @@
 ## notch_identify
 >缺口图片滑块识别  
 缺口图  
-![slide.png](https://raw.githubusercontent.com/Juannie-PP/image/main/slide.png?token=GHSAT0AAAAAACG2SM6Q6WIEYBFI4KN2UT5UZIERHXA)  
+![slide.png](https://github.com/Juannie-PP/image/blob/main/slide.png)  
 带滑块缺口的背景图  
-![background.png](https://raw.githubusercontent.com/Juannie-PP/image/main/background.png?token=GHSAT0AAAAAACG2SM6QGPEIZ6XBXYHFH3FWZIERGRA)  
+![background.png](https://github.com/Juannie-PP/image/blob/main/background.png)  
 
 ```python
 from tenon import notch_identify
@@ -35,15 +35,14 @@ distance = notch_identify(slide, background, image_type=2)
 ```
 
 
-
 ## rotate_identify
 >双图旋转图片滑块识别, 支持外圈图片为矩形、方形、圆形  
 内圈图  
-![inner.jpeg](https://raw.githubusercontent.com/Juannie-PP/image/main/inner.jpeg?token=GHSAT0AAAAAACG2SM6QY75SKJRP3Z3CALTCZIERBCA)  
+![inner.jpeg](https://github.com/Juannie-PP/image/blob/main/inner.jpeg)  
 外圈图  
-![outer.jpeg](https://raw.githubusercontent.com/Juannie-PP/image/main/outer.jpeg?token=GHSAT0AAAAAACG2SM6QR5EU7ACC4RJLA4RGZIERJMA)  
+![outer.jpeg](https://github.com/Juannie-PP/image/blob/main/outer.jpeg)  
 > small_circle_crop_pixel: 小圈外部留白的像素，使用截图工具即可得到  
-> <img alt="small_circle_crop_pixel.png" height="300" src="https://raw.githubusercontent.com/Juannie-PP/image/main/small_circle_crop_pixel.png?token=GHSAT0AAAAAACG2SM6QJCOLHQ3FGUFKJNHCZIERKBA" width="300"/>
+> <img alt="small_circle_crop_pixel.png" height="300" src="https://github.com/Juannie-PP/image/blob/main/small_circle_crop_pixel.png" width="300"/>
 
 ```python
 from tenon import rotate_identify
@@ -57,5 +56,5 @@ result = rotate_identify(small_circle, big_circle, small_circle_crop_pixel=55)
 >旋转验证码调试方法，输出旋转后图片
 
 👏👏👏欢迎和各位大佬交流学习  
-<img alt="vx.JPG" height="200" src="https://raw.githubusercontent.com/Juannie-PP/image/main/vx.JPG?token=GHSAT0AAAAAACG2SM6QDYIAYVRZIIREWAXAZIERIPA" width="200"/>  
+<img alt="vx.JPG" height="200" src="https://github.com/Juannie-PP/image/blob/main/vx.JPG" width="200"/>  
 🤫加好友备注: captcha-utils
