@@ -52,7 +52,3 @@ result = rotate_identify(small_circle, big_circle, small_circle_crop_pixel=55)
 ```
 ## rotate_identify_and_show_image  
 >旋转验证码调试方法，输出旋转后图片
-
-👏👏👏欢迎和各位大佬交流学习  
-<img alt="vx.JPG" height="200" src="https://image-luyuan.oss-cn-hangzhou.aliyuncs.com/image/vx.JPG" width="200"/>  
-🤫加好友备注: captcha-utils
