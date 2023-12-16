@@ -42,8 +42,7 @@ distance = notch_identify(slide, background, image_type=2)
 内圈图  
 ![inner.jpeg](https://image-luyuan.oss-cn-hangzhou.aliyuncs.com/image/inner.jpeg)  
 外圈图  
-![outer.jpeg](tests/image/outer.jpeg)  
-> small_circle_crop_pixel: 小圈外部留白的像素:（图片宽度 - 有图部分的直径) / 2  
+![outer.jpeg](https://image-luyuan.oss-cn-hangzhou.aliyuncs.com/image/outer.jpeg)   
 
 ```python
 from tenon import rotate_identify
@@ -58,4 +57,4 @@ result = rotate_identify(small_circle, big_circle)
 
 👏👏👏欢迎和各位大佬交流学习  
 <img alt="vx.JPG" height="200" src="https://image-luyuan.oss-cn-hangzhou.aliyuncs.com/image/vx.JPG" width="200"/>  
-🤫加好友备注: captcha-utils
+🤫加好友备注: tenon
