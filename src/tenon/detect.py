@@ -135,7 +135,7 @@ def rotate_identify(
     grayscale: bool = False,
     anticlockwise: bool = False,
     proxies: Optional[dict] = None,
-):
+) -> MatchData:
     """
     双图旋转类型滑块验证码识别
     :param small_circle: 小圈图片
