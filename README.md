@@ -42,7 +42,7 @@ distance = notch_identify(slide, background, image_type=2)
 内圈图  
 ![inner.jpeg](https://image-luyuan.oss-cn-hangzhou.aliyuncs.com/image/inner.jpeg)  
 外圈图  
-![outer.jpeg](tests/image/outer.jpeg)   
+![outer.jpeg](https://image-luyuan.oss-cn-hangzhou.aliyuncs.com/image/outer.jpeg)   
 
 ```python
 from tenon import rotate_identify
