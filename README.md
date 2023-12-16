@@ -4,6 +4,7 @@
 ![PyPI - Version](https://img.shields.io/pypi/v/tenon)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/tenon) 
 ![PyPI - Downloads](https://img.shields.io/pypi/dw/tenon)
+![PyPI - Downloads](https://img.shields.io/pypi/dd/tenon)
 
 ## 缺口验证码和旋转验证码解决方案
 该库主要提供两种类型的滑块识别，主要通过opencv实现，支持图片格式：base64、图片文件地址、图片url链接
@@ -21,9 +22,9 @@
 ## notch_identify
 >缺口图片滑块识别  
 缺口图  
-![slide.png](tests/image/slide.png)  
+![slide.png](https://image-luyuan.oss-cn-hangzhou.aliyuncs.com/image/slide.png)  
 带滑块缺口的背景图  
-![background.png](tests/image/background.png)
+![background.png](https://image-luyuan.oss-cn-hangzhou.aliyuncs.com/image/background.png)  
 
 ```python
 from tenon import notch_identify
@@ -36,11 +37,10 @@ distance = notch_identify(slide, background, image_type=2)
 ```
 
 
-
 ## rotate_identify
 >双图旋转图片滑块识别, 支持外圈图片为矩形、方形、圆形  
 内圈图  
-![inner.jpeg](tests/image/inner.jpeg)  
+![inner.jpeg](https://image-luyuan.oss-cn-hangzhou.aliyuncs.com/image/inner.jpeg)  
 外圈图  
 ![outer.jpeg](tests/image/outer.jpeg)  
 > small_circle_crop_pixel: 小圈外部留白的像素:（图片宽度 - 有图部分的直径) / 2  
@@ -55,7 +55,3 @@ result = rotate_identify(small_circle, big_circle)
 ```
 ## rotate_identify_and_show_image  
 >旋转验证码调试方法，输出旋转后图片
-
-👏👏👏欢迎和各位大佬交流学习  
-<img alt="vx.JPG" height="200" src="tests/image/vx.JPG" width="200"/>  
-🤫加好友备注: captcha-utils
