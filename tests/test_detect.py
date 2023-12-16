@@ -6,28 +6,24 @@ current_work_dir = os.path.dirname(__file__)
 
 
 @pytest.mark.parametrize(
-    "small_circle, big_circle, image_type, small_circle_crop_pixel, expected",
+    "small_circle, big_circle, image_type, expected",
     [
         (
             current_work_dir + "/image/inner.png",
             current_work_dir + "/image/outer.png",
             2,
-            102,
-            313,
+            311,
         ),
     ],
 )
-def test_rotate_identify(
-    small_circle, big_circle, image_type, small_circle_crop_pixel, expected
-):
+def test_rotate_identify(small_circle, big_circle, image_type, expected):
     result = rotate_identify(
         small_circle,
         big_circle,
         image_type,
-        small_circle_crop_pixel=small_circle_crop_pixel,
     )
 
-    assert result["total_angle"] == expected
+    assert result.total_rotate_angle == expected
 
 
 @pytest.mark.parametrize(
