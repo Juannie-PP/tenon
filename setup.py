@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="tenon",
-    version="0.1.4",
+    version="0.1.5",
     package_dir={"": "src"},
     packages=["tenon"],
     url="https://github.com/Juannie-PP/tenon",

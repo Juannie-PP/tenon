@@ -179,6 +179,7 @@ def rotate_identify(
     :param small_circle: 小圈图片
     :param big_circle: 大圈图片
     :param image_type: 图片类型: 0: 图片base64; 1: 图片url; 2: 图片文件地址
+    :param grayscale: 是否需要灰度化处理: True: 是; False: 否
     :param check_pixel: 进行图片验证的像素宽度
     :param speed_ratio: 小圈与大圈的转动速率比: 小圈转动360度时/大圈转动的角度
     :param grayscale: 是否需要灰度化处理: True: 是; False: 否
