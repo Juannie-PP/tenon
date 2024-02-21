@@ -55,6 +55,7 @@ result = rotate_identify(small_circle, big_circle)
 ## rotate_identify_and_show_image  
 >旋转验证码调试方法，输出旋转后图片
 
-👏👏👏欢迎和各位大佬交流学习，有问题多提意见，非常感谢🙏！！！  
+👏👏👏欢迎和各位大佬交流学习  
+有问题多提意见，非常感谢🙏！！！  
 <img alt="vx.JPG" height="200" src="https://image-luyuan.oss-cn-hangzhou.aliyuncs.com/image/vx.JPG" width="200"/>  
 🤫加好友备注: tenon
