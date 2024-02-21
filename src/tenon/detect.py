@@ -50,7 +50,7 @@ def cut_image(origin_array, std, cut_value, radius=None, check_pixel=None):
                     pixels = tuple(
                         pixel
                         for pixel in tuple(pixel_set)
-                        if cut_pixel < pixel < 255 - cut_value
+                        if cut_value <= pixel <= 255 - cut_value
                     )
                     pixel_std = np.std(pixels)
                     if pixel_std > std:
@@ -59,14 +59,16 @@ def cut_image(origin_array, std, cut_value, radius=None, check_pixel=None):
                     count = 0
                     pixels = [[], [], []]
                     for b, g, r in pixel_set:
-                        if min(b, g, r) > cut_pixel and max(b, g, r) < 255 - cut_value:
+                        if cut_value <= min(b, g, r) <= max(b, g, r) <= 255 - cut_value:
                             pixels[0].append(b)
                             pixels[1].append(g)
                             pixels[2].append(r)
 
-                    bgr_std = tuple(np.std(pixels[i]) for i in range(3))
+                    bgr_std = tuple(
+                        np.std(pixels[i]) if pixels[i] else 0 for i in range(3)
+                    )
                     for pixel_std in bgr_std:
-                        if pixel_std > std:
+                        if pixel_std >= std:
                             count += 1
                     if count == 3:
                         break
@@ -83,7 +85,7 @@ def cut_image(origin_array, std, cut_value, radius=None, check_pixel=None):
                 pos = p + i * radius
                 for _ in range(p - radius):
                     p_x, p_y = (pos, y) if len(cut_pixel_list) % 2 else (x, pos)
-                    pixel_point = origin_array[p_x][p_y]
+                    pixel_point = origin_array[p_y][p_x]
                     pixel_set = (
                         {pixel_point} - {0, 255}
                         if isinstance(pixel_point, np.uint8)
