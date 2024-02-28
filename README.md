@@ -15,7 +15,7 @@
 ## 安装
 
 ```
- pip install tenon
+ pip3 install --upgrade tenon
 ```
 
 
